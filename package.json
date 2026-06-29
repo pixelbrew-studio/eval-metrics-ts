@@ -1,0 +1,35 @@
+{
+  "name": "eval-metrics-ts",
+  "version": "0.1.0",
+  "description": "Small TypeScript metrics for classification and ranking evaluations.",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "npm run build && node --test test/*.test.mjs"
+  },
+  "keywords": [
+    "evaluation",
+    "metrics",
+    "classification",
+    "ranking",
+    "typescript",
+    "llm-evals"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.8.0"
+  }
+}
+
