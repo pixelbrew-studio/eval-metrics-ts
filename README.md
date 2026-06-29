@@ -2,6 +2,8 @@
 
 Small TypeScript metrics for classification and ranking evaluations.
 
+[Built by Pixelbrew Studio](https://pixelbrew.studio/work/eval-metrics-ts) as part of its public workbench for evaluation tools and AI-native product experiments.
+
 The package is intentionally plain: arrays in, numbers out. It is useful for LLM evals, search/ranking checks, classifier tests, and product experiments where a full evaluation framework would be too much.
 
 ## Install
@@ -47,3 +49,8 @@ All paired arrays must have equal lengths. Length mismatches throw a `RangeError
 - If predicted scores tie for a non-tied expected pair, the pair receives `0.5` credit.
 - Top-k tie handling is stable by original index. This keeps the function deterministic and dependency-free.
 
+## Related Work
+
+- [Pixelbrew Studio](https://pixelbrew.studio) - independent AI-native product lab for small tools and public experiments.
+- [pb-suite](https://github.com/pixelbrew-studio/pb-suite) - local command suite for AI-assisted product engineering, reviews, QA, and release discipline.
+- [quote-locator](https://github.com/pixelbrew-studio/quote-locator) - TypeScript utility for locating claimed quotes inside source text.
