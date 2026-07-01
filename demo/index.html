@@ -8,89 +8,99 @@
       name="description"
       content="Interactive demo for classification and ranking evaluation metrics in eval-metrics-ts."
     />
+    <link rel="stylesheet" href="../node_modules/@primer/primitives/dist/css/functional/themes/light.css" />
+    <link rel="stylesheet" href="../node_modules/@primer/css/dist/primer.css" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
-    <div class="page-shell">
+  <body data-color-mode="light" data-light-theme="light" data-dark-theme="dark">
+    <div class="page-shell p-responsive">
       <header class="hero">
-        <p class="eyebrow">Reference Demo</p>
-        <h1>Evaluation metrics you can inspect instead of merely trust.</h1>
-        <p class="lede">
-          This demo runs directly in the browser using the repository's built output. No service calls, no UI
-          framework, no hidden scoring layer.
-        </p>
-        <div class="hero-note">
-          <p>What it does:</p>
-          <ul>
-            <li>Paste expected and predicted class labels to compute accuracy, per-label precision/recall/F1, and macro F1.</li>
-            <li>Paste expected and predicted ranking scores to compute pairwise ranking accuracy and top-k overlap.</li>
-            <li>Use the example buttons to see the metrics update immediately, then inspect the source if you want the exact logic.</li>
-          </ul>
+        <div class="hero-copy">
+          <p class="eyebrow">
+            <span class="IssueLabel color-bg-accent-emphasis color-fg-on-emphasis border-0">Reference Demo</span>
+          </p>
+          <h1 class="hero-title f00-light lh-condensed">Test classification and ranking metrics in the browser.</h1>
+          <p class="lede f3 color-fg-muted">
+            Paste expected and predicted labels or scores, then compare the results using the same logic shipped in the repository.
+          </p>
+          <p class="hero-links text-small text-semibold color-fg-muted">
+            <a href="https://github.com/pixelbrew-studio/eval-metrics-ts">Source on GitHub</a>
+            <span>/</span>
+            <a href="https://pixelbrew.studio">Pixelbrew Studio</a>
+          </p>
+        </div>
+
+        <div class="hero-note color-bg-subtle border color-border-default rounded-2 p-3">
+          <p class="hero-note-copy color-fg-muted">
+            Start with classification for label-level accuracy and F1. Use ranking when you want pair ordering quality and top-k agreement. Load the examples, compare the numbers, then inspect the source.
+          </p>
         </div>
       </header>
 
-      <main class="grid">
-        <section class="panel">
+      <main class="demo-grid">
+        <section class="demo-panel demo-panel--primary">
           <div class="panel-head">
             <div>
-              <p class="section-kicker">Classification</p>
-              <h2>Labels in, scores out.</h2>
+              <p class="section-kicker text-small text-semibold color-fg-accent text-uppercase">Classification</p>
+              <h2 class="h2 lh-condensed">Labels in, scores out.</h2>
             </div>
-            <button id="classification-fill" class="ghost-button" type="button">Load Example</button>
+            <button id="classification-fill" class="btn btn-sm" type="button">Reset Example</button>
           </div>
 
           <label class="field">
-            <span>Expected labels</span>
-            <textarea id="classification-expected" spellcheck="false">pass, review, fail, pass</textarea>
+            <span class="field-label">Expected labels</span>
+            <textarea id="classification-expected" class="form-control demo-control demo-textarea" spellcheck="false">pass, review, fail, pass</textarea>
           </label>
 
           <label class="field">
-            <span>Predicted labels</span>
-            <textarea id="classification-predicted" spellcheck="false">pass, fail, fail, pass</textarea>
+            <span class="field-label">Predicted labels</span>
+            <textarea id="classification-predicted" class="form-control demo-control demo-textarea" spellcheck="false">pass, fail, fail, pass</textarea>
           </label>
 
-          <button id="classification-run" class="action-button" type="button">Run classification metrics</button>
-          <p id="classification-error" class="error-text" aria-live="polite"></p>
-          <p class="helper-text">
+          <button id="classification-run" class="btn btn-primary" type="button">Calculate classification metrics</button>
+          <p id="classification-error" class="error-text text-small" aria-live="polite"></p>
+          <p class="helper-text color-fg-muted">
             One label per item. Commas or new lines both work. The table below shows the per-class breakdown for the two arrays.
           </p>
 
           <div class="stat-strip" id="classification-stats"></div>
-          <div class="table-wrap">
-            <table>
+          <div class="table-wrap border color-border-default rounded-2">
+            <table class="demo-table width-full">
               <thead id="classification-metrics-head"></thead>
               <tbody id="classification-metrics-body"></tbody>
             </table>
           </div>
         </section>
 
-        <section class="panel">
+        <section class="demo-panel">
           <div class="panel-head">
             <div>
-              <p class="section-kicker">Ranking</p>
-              <h2>Order quality without the usual ceremony.</h2>
+              <p class="section-kicker text-small text-semibold color-fg-accent text-uppercase">Ranking</p>
+              <h2 class="h2 lh-condensed">Order quality without the usual ceremony.</h2>
             </div>
-            <button id="ranking-fill" class="ghost-button" type="button">Load Example</button>
+            <button id="ranking-fill" class="btn btn-sm" type="button">Reset Example</button>
           </div>
 
           <label class="field">
-            <span>Expected scores</span>
-            <textarea id="ranking-expected" spellcheck="false">0.95, 0.7, 0.2, 0.5</textarea>
+            <span class="field-label">Expected scores</span>
+            <textarea id="ranking-expected" class="form-control demo-control demo-textarea" spellcheck="false">0.95, 0.7, 0.2, 0.5</textarea>
           </label>
 
-          <label class="field">
-            <span>Predicted scores</span>
-            <textarea id="ranking-predicted" spellcheck="false">0.9, 0.6, 0.3, 0.4</textarea>
-          </label>
+          <div class="field-row">
+            <label class="field">
+              <span class="field-label">Predicted scores</span>
+              <textarea id="ranking-predicted" class="form-control demo-control demo-textarea" spellcheck="false">0.9, 0.6, 0.3, 0.4</textarea>
+            </label>
 
-          <label class="field field-inline">
-            <span>k for top-k overlap</span>
-            <input id="ranking-k" type="number" min="1" step="1" value="2" />
-          </label>
+            <label class="field field-inline">
+              <span class="field-label">k for top-k overlap</span>
+              <input id="ranking-k" class="form-control demo-control" type="number" min="1" step="1" value="2" />
+            </label>
+          </div>
 
-          <button id="ranking-run" class="action-button" type="button">Run ranking metrics</button>
-          <p id="ranking-error" class="error-text" aria-live="polite"></p>
-          <p class="helper-text">
+          <button id="ranking-run" class="btn btn-primary" type="button">Calculate ranking metrics</button>
+          <p id="ranking-error" class="error-text text-small" aria-live="polite"></p>
+          <p class="helper-text color-fg-muted">
             Enter the ground-truth score ordering and the predicted score ordering for the same items. The demo reports overall pair ordering quality and top-k agreement.
           </p>
 

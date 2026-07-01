@@ -3,3 +3,10 @@ dist/
 site/
 coverage/
 .DS_Store
+
+# Local tooling / workspace scratch — never for the public repo
+.conductor/
+.context/
+.pb-design-review/
+.playwright-mcp/
+/*.png

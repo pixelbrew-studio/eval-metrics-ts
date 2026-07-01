@@ -66,3 +66,22 @@ test("scores top-k overlap", () => {
   assert.equal(topKOverlap([10, 9, 1, 0], [0, 1, 9, 10], 2), 0);
   assert.equal(topKOverlap([10, 9, 1, 0], [10, 1, 9, 0], 2), 0.5);
 });
+
+test("breaks top-k ties by original index", () => {
+  // Expected all tie -> top-2 is indices {0,1} (stable by index), not {1,2}.
+  // Predicted [1,2,3] top-2 is indices {2,1}; overlap is {1} = 0.5.
+  assert.equal(topKOverlap([5, 5, 5], [1, 2, 3], 2), 0.5);
+});
+
+test("clamps k above the input length", () => {
+  assert.equal(topKOverlap([3, 1], [3, 1], 5), 1);
+});
+
+test("honors an explicit label set", () => {
+  const matrix = confusionMatrix(["a", "b"], ["a", "a"], ["a", "b", "c"]);
+
+  assert.deepEqual(matrix.labels, ["a", "b", "c"]);
+  assert.equal(matrix.counts.get("c").get("c"), 0);
+  assert.equal(matrix.counts.get("a").get("a"), 1);
+  assert.equal(matrix.counts.get("b").get("a"), 1);
+});
