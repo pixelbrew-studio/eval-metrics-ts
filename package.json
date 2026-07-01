@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "description": "Small TypeScript metrics for classification and ranking evaluations.",
   "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -17,8 +19,18 @@
   ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "build:site": "npm run build && node scripts/build-site.mjs",
     "test": "npm run build && node --test test/*.test.mjs"
   },
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pixelbrew-studio/eval-metrics-ts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pixelbrew-studio/eval-metrics-ts/issues"
+  },
+  "homepage": "https://github.com/pixelbrew-studio/eval-metrics-ts#readme",
   "keywords": [
     "evaluation",
     "metrics",

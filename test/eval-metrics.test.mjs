@@ -49,6 +49,12 @@ test("throws on length mismatches", () => {
   assert.throws(() => pairwiseRankingAccuracy([1], []), RangeError);
 });
 
+test("rejects invalid ranking inputs", () => {
+  assert.throws(() => pairwiseRankingAccuracy([1, 0], [Number.NaN, 0]), TypeError);
+  assert.throws(() => topKOverlap([1, 0], [Infinity, 0], 1), TypeError);
+  assert.throws(() => topKOverlap([1, 0], [1, 0], 1.5), TypeError);
+});
+
 test("scores ranking pairs and ties", () => {
   assert.equal(pairwiseRankingAccuracy([3, 2, 1], [0.9, 0.8, 0.1]), 1);
   assert.equal(pairwiseRankingAccuracy([3, 2], [0.5, 0.5]), 0.5);
@@ -60,4 +66,3 @@ test("scores top-k overlap", () => {
   assert.equal(topKOverlap([10, 9, 1, 0], [0, 1, 9, 10], 2), 0);
   assert.equal(topKOverlap([10, 9, 1, 0], [10, 1, 9, 0], 2), 0.5);
 });
-

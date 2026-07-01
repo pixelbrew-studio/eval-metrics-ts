@@ -2,17 +2,31 @@
 
 Small TypeScript metrics for classification and ranking evaluations.
 
+[Live Demo](https://pixelbrew-studio.github.io/eval-metrics-ts/) | [Studio Writeup](https://pixelbrew.studio/work/eval-metrics-ts) | [Evalgist](https://evalgist.ai) | [Source](https://github.com/pixelbrew-studio/eval-metrics-ts)
+
 [Built by Pixelbrew Studio](https://pixelbrew.studio/work/eval-metrics-ts) as part of its public workbench for evaluation tools and AI-native product experiments.
 
-The package is intentionally plain: arrays in, numbers out. It is useful for LLM evals, search/ranking checks, classifier tests, and product experiments where a full evaluation framework would be too much.
+This repository is a compact public reference implementation: arrays in, numbers out. It is useful for LLM evals, search/ranking checks, classifier tests, and product experiments where a full evaluation framework would be too much.
 
-## Install
+It exists primarily as a readable, auditable code sample rather than a separately managed distribution surface.
+
+> Use the live demo to test classification and ranking examples in the browser, then inspect the implementation to see the exact scoring behavior with no framework noise and no server-side abstraction.
+
+## Local Use
 
 ```bash
-npm install eval-metrics-ts
+npm install
+npm test
+npm run build:site
 ```
 
-## Use
+## Demo
+
+The repository includes a static browser demo in [`demo/`](/Users/prive/conductor/workspaces/eval-metrics-ts/stockholm/demo/index.html) and a GitHub Pages deployment workflow in [.github/workflows/pages.yml](/Users/prive/conductor/workspaces/eval-metrics-ts/stockholm/.github/workflows/pages.yml). Once GitHub Pages is enabled for Actions, the published URL should be:
+
+`https://pixelbrew-studio.github.io/eval-metrics-ts/`
+
+## Example
 
 ```ts
 import { accuracy, macroF1, pairwiseRankingAccuracy, topKOverlap } from "eval-metrics-ts";
@@ -42,6 +56,7 @@ console.log(topKOverlap(truth, scores, 2)); // 1
 | `topKOverlap(expectedScores, predictedScores, k)` | Overlap between true top-k and predicted top-k. |
 
 All paired arrays must have equal lengths. Length mismatches throw a `RangeError`.
+Ranking functions require finite numeric scores. `topKOverlap` also requires an integer `k`. Invalid numeric inputs throw a `TypeError`.
 
 ## Ranking Tie Policy
 
@@ -52,5 +67,6 @@ All paired arrays must have equal lengths. Length mismatches throw a `RangeError
 ## Related Work
 
 - [Pixelbrew Studio](https://pixelbrew.studio) - independent AI-native product lab for small tools and public experiments.
+- [Evalgist](https://evalgist.ai) - evaluation-focused tools and references for measuring model and workflow quality.
 - [pb-suite](https://github.com/pixelbrew-studio/pb-suite) - local command suite for AI-assisted product engineering, reviews, QA, and release discipline.
 - [quote-locator](https://github.com/pixelbrew-studio/quote-locator) - TypeScript utility for locating claimed quotes inside source text.
