@@ -19,6 +19,14 @@
           This demo runs directly in the browser using the repository's built output. No service calls, no UI
           framework, no hidden scoring layer.
         </p>
+        <div class="hero-note">
+          <p>What it does:</p>
+          <ul>
+            <li>Paste expected and predicted class labels to compute accuracy, per-label precision/recall/F1, and macro F1.</li>
+            <li>Paste expected and predicted ranking scores to compute pairwise ranking accuracy and top-k overlap.</li>
+            <li>Use the example buttons to see the metrics update immediately, then inspect the source if you want the exact logic.</li>
+          </ul>
+        </div>
       </header>
 
       <main class="grid">
@@ -43,6 +51,9 @@
 
           <button id="classification-run" class="action-button" type="button">Run classification metrics</button>
           <p id="classification-error" class="error-text" aria-live="polite"></p>
+          <p class="helper-text">
+            One label per item. Commas or new lines both work. The table below shows the per-class breakdown for the two arrays.
+          </p>
 
           <div class="stat-strip" id="classification-stats"></div>
           <div class="table-wrap">
@@ -79,6 +90,9 @@
 
           <button id="ranking-run" class="action-button" type="button">Run ranking metrics</button>
           <p id="ranking-error" class="error-text" aria-live="polite"></p>
+          <p class="helper-text">
+            Enter the ground-truth score ordering and the predicted score ordering for the same items. The demo reports overall pair ordering quality and top-k agreement.
+          </p>
 
           <div class="stat-strip" id="ranking-stats"></div>
         </section>
