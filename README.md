@@ -73,4 +73,4 @@ Ranking functions require finite numeric scores. `topKOverlap` also requires an 
 ## Related Work
 
 - [Pixelbrew Studio](https://pixelbrew.studio) - independent AI-native product lab for small tools and public experiments.
-- [Evalgist](https://evalgist.ai)
+- [Evalgist](https://evalgist.ai) - AI-assisted evaluation tools with quoted evidence.
