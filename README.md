@@ -2,7 +2,7 @@
 
 Small TypeScript metrics for classification and ranking evaluations.
 
-[Live Demo](https://pixelbrew-studio.github.io/eval-metrics-ts/) | [Studio Writeup](https://pixelbrew.studio/work/eval-metrics-ts) | [Evalgist](https://evalgist.ai) | [Source](https://github.com/pixelbrew-studio/eval-metrics-ts)
+[Live Demo](https://pixelbrew-studio.github.io/eval-metrics-ts/) | [Evalgist](https://evalgist.ai)
 
 [Built by Pixelbrew Studio](https://pixelbrew.studio/work/eval-metrics-ts) as part of its public workbench for evaluation tools and AI-native product experiments.
 
@@ -22,7 +22,7 @@ npm run build:site
 
 ## Demo
 
-The repository includes a static browser demo in [`demo/`](/Users/prive/conductor/workspaces/eval-metrics-ts/stockholm/demo/index.html) and a GitHub Pages deployment workflow in [.github/workflows/pages.yml](/Users/prive/conductor/workspaces/eval-metrics-ts/stockholm/.github/workflows/pages.yml). Once GitHub Pages is enabled for Actions, the published URL should be:
+The repository includes a static browser demo in [demo/index.html](demo/index.html) and a GitHub Pages deployment workflow in [.github/workflows/pages.yml](.github/workflows/pages.yml). The published URL is:
 
 `https://pixelbrew-studio.github.io/eval-metrics-ts/`
 
@@ -68,5 +68,3 @@ Ranking functions require finite numeric scores. `topKOverlap` also requires an 
 
 - [Pixelbrew Studio](https://pixelbrew.studio) - independent AI-native product lab for small tools and public experiments.
 - [Evalgist](https://evalgist.ai) - evaluation-focused tools and references for measuring model and workflow quality.
-- [pb-suite](https://github.com/pixelbrew-studio/pb-suite) - local command suite for AI-assisted product engineering, reviews, QA, and release discipline.
-- [quote-locator](https://github.com/pixelbrew-studio/quote-locator) - TypeScript utility for locating claimed quotes inside source text.
