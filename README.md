@@ -18,6 +18,7 @@ It exists primarily as a readable, auditable code sample rather than a separatel
 npm install
 npm test
 npm run build:site
+npm run preview
 ```
 
 ## Demo

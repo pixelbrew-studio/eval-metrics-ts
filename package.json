@@ -20,6 +20,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "build:site": "npm run build && node scripts/build-site.mjs",
+    "preview": "npm run build:site && node scripts/preview-site.mjs",
     "test": "npm run build && node --test test/*.test.mjs"
   },
   "sideEffects": false,
@@ -41,6 +42,8 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "@primer/css": "^22.3.0",
+    "@primer/primitives": "^11.9.0",
     "@types/node": "^24.0.0",
     "typescript": "^5.8.0"
   }

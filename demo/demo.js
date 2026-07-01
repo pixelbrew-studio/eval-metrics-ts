@@ -62,7 +62,11 @@ function runClassification() {
     renderStats(classificationStats, [
       { label: "Samples", value: String(expected.length) },
       { label: "Accuracy", value: formatNumber(accuracy(expected, predicted)) },
-      { label: "Macro F1", value: formatNumber(summary.macroF1) },
+      {
+        label: "Macro F1",
+        value: formatNumber(summary.macroF1),
+        hint: "Per-label F1 scores averaged evenly, so rare labels count as much as common ones.",
+      },
       { label: "Labels", value: String(matrix.labels.length) },
     ]);
 
@@ -110,7 +114,7 @@ function runRanking() {
       { label: "Samples", value: String(expected.length) },
       { label: "Pairwise", value: formatNumber(pairwiseRankingAccuracy(expected, predicted)) },
       { label: "Top-k", value: formatNumber(topKOverlap(expected, predicted, k)) },
-      { label: "k", value: String(k) },
+      { label: "k", value: String(k), hint: "Number of top-ranked items compared for top-k overlap." },
     ]);
   } catch (error) {
     renderStats(rankingStats, []);
@@ -139,10 +143,10 @@ function parseNumbers(input) {
 function renderStats(container, stats) {
   container.innerHTML = stats
     .map(
-      ({ label, value }) => `
-        <div class="stat-card">
-          <span class="label">${escapeHtml(label)}</span>
-          <span class="value">${escapeHtml(value)}</span>
+      ({ label, value, hint }) => `
+        <div class="border color-border-default rounded-2 p-3 color-bg-subtle"${hint ? ` title="${escapeHtml(hint)}"` : ""}>
+          <span class="text-small text-semibold color-fg-muted text-uppercase d-block">${escapeHtml(label)}</span>
+          <span class="f3 lh-condensed d-block mt-2">${escapeHtml(value)}</span>
         </div>
       `,
     )
