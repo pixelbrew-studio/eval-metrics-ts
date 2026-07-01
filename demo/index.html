@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>eval-metrics-ts demo</title>
+    <meta
+      name="description"
+      content="Interactive demo for classification and ranking evaluation metrics in eval-metrics-ts."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <p class="eyebrow">Reference Demo</p>
+        <h1>Evaluation metrics you can inspect instead of merely trust.</h1>
+        <p class="lede">
+          This demo runs directly in the browser using the repository's built output. No service calls, no UI
+          framework, no hidden scoring layer.
+        </p>
+      </header>
+
+      <main class="grid">
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="section-kicker">Classification</p>
+              <h2>Labels in, scores out.</h2>
+            </div>
+            <button id="classification-fill" class="ghost-button" type="button">Load Example</button>
+          </div>
+
+          <label class="field">
+            <span>Expected labels</span>
+            <textarea id="classification-expected" spellcheck="false">pass, review, fail, pass</textarea>
+          </label>
+
+          <label class="field">
+            <span>Predicted labels</span>
+            <textarea id="classification-predicted" spellcheck="false">pass, fail, fail, pass</textarea>
+          </label>
+
+          <button id="classification-run" class="action-button" type="button">Run classification metrics</button>
+          <p id="classification-error" class="error-text" aria-live="polite"></p>
+
+          <div class="stat-strip" id="classification-stats"></div>
+          <div class="table-wrap">
+            <table>
+              <thead id="classification-metrics-head"></thead>
+              <tbody id="classification-metrics-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <p class="section-kicker">Ranking</p>
+              <h2>Order quality without the usual ceremony.</h2>
+            </div>
+            <button id="ranking-fill" class="ghost-button" type="button">Load Example</button>
+          </div>
+
+          <label class="field">
+            <span>Expected scores</span>
+            <textarea id="ranking-expected" spellcheck="false">0.95, 0.7, 0.2, 0.5</textarea>
+          </label>
+
+          <label class="field">
+            <span>Predicted scores</span>
+            <textarea id="ranking-predicted" spellcheck="false">0.9, 0.6, 0.3, 0.4</textarea>
+          </label>
+
+          <label class="field field-inline">
+            <span>k for top-k overlap</span>
+            <input id="ranking-k" type="number" min="1" step="1" value="2" />
+          </label>
+
+          <button id="ranking-run" class="action-button" type="button">Run ranking metrics</button>
+          <p id="ranking-error" class="error-text" aria-live="polite"></p>
+
+          <div class="stat-strip" id="ranking-stats"></div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="./demo.js"></script>
+  </body>
+</html>

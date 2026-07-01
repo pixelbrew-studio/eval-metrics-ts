@@ -88,6 +88,8 @@ export function pairwiseRankingAccuracy(
   predictedScores: readonly number[],
 ): number {
   assertSameLength(expectedScores, predictedScores);
+  assertFiniteNumbers(expectedScores, "expectedScores");
+  assertFiniteNumbers(predictedScores, "predictedScores");
 
   let scoredPairs = 0;
   let credit = 0;
@@ -113,6 +115,9 @@ export function topKOverlap(
   k: number,
 ): number {
   assertSameLength(expectedScores, predictedScores);
+  assertFiniteNumbers(expectedScores, "expectedScores");
+  assertFiniteNumbers(predictedScores, "predictedScores");
+  assertInteger(k, "k");
   if (k <= 0 || expectedScores.length === 0) return 0;
 
   const limit = Math.min(k, expectedScores.length);
@@ -145,6 +150,21 @@ function divide(numerator: number, denominator: number): number {
   return denominator === 0 ? 0 : numerator / denominator;
 }
 
+function assertFiniteNumbers(values: readonly number[], name: string): void {
+  for (let index = 0; index < values.length; index += 1) {
+    const value = values[index]!;
+    if (!Number.isFinite(value)) {
+      throw new TypeError(`Expected ${name} to contain only finite numbers, received ${String(value)} at index ${index}.`);
+    }
+  }
+}
+
+function assertInteger(value: number, name: string): void {
+  if (!Number.isInteger(value)) {
+    throw new TypeError(`Expected ${name} to be an integer, received ${String(value)}.`);
+  }
+}
+
 function topIndexes(scores: readonly number[], k: number): number[] {
   return scores
     .map((score, index) => ({ score, index }))
@@ -152,4 +172,3 @@ function topIndexes(scores: readonly number[], k: number): number[] {
     .slice(0, k)
     .map((item) => item.index);
 }
-

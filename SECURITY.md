@@ -28,4 +28,4 @@ Out of scope:
 
 - expected metric limitations
 - product-specific scoring policies in downstream applications
-- requests involving Evalgist private systems or company-owned assets
+- requests involving private studio systems or other non-public infrastructure
