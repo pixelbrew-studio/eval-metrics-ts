@@ -2,7 +2,7 @@
 
 Small TypeScript metrics for classification and ranking evaluations.
 
-[Live Demo](https://pixelbrew-studio.github.io/eval-metrics-ts/) | [Evalgist](https://evalgist.ai)
+[Live Demo](https://pixelbrew-studio.github.io/eval-metrics-ts/)
 
 [Built by Pixelbrew Studio](https://pixelbrew.studio/work/eval-metrics-ts) as part of its public workbench for evaluation tools and AI-native product experiments.
 
