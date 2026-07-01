@@ -22,7 +22,13 @@ npm run build:site
 
 ## Demo
 
-The repository includes a static browser demo in [demo/index.html](demo/index.html) and a GitHub Pages deployment workflow in [.github/workflows/pages.yml](.github/workflows/pages.yml). The published URL is:
+The repository includes a static browser demo in [demo/index.html](demo/index.html) and a GitHub Pages deployment workflow in [.github/workflows/pages.yml](.github/workflows/pages.yml). The demo lets you:
+
+- paste expected and predicted class labels to inspect accuracy, per-label precision/recall/F1, and macro F1
+- paste expected and predicted ranking scores to inspect pairwise ranking accuracy and top-k overlap
+- load built-in examples, then compare the visible results with the implementation in `src/index.ts`
+
+The published URL is:
 
 `https://pixelbrew-studio.github.io/eval-metrics-ts/`
 
